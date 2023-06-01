@@ -26,12 +26,11 @@ app.controller(
             icon: "success",
             title: "Successfully updated !",
           });
-          event.preventDefault();
           $scope.isEditing = false;
         })
         .catch(function (error) {
           console.error("Lỗi khi cập nhật thông tin sinh viên:", error);
-          alert("Đã xảy ra lỗi khi cập nhật thông tin sinh viên.", error);
+        
         });
     };
 
