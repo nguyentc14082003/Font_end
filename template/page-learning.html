@@ -1,0 +1,55 @@
+<section class="page-section" id="learning">
+    <div class="container-fluid p-0">
+        <div class="introduction text-center fs-1">
+            <p class="p1 m-0">LEARNING</p>
+            <div class="line mx-auto"></div>
+            <p class="p2">Do online quizzes. Choose your quiz!</p>
+        </div>
+
+        <div class="slick-carousel">
+            <div class="container">
+                <div class="row">
+                    <article class="quiz-item col-xs-6 col-md-6 col-lg-3 mb-3 m-0"
+                        ng-repeat="sj in list_subjects|limitTo:4:begin">
+                        <div class="card">
+                            <a href="{{sj.Id}}">
+                                <img ng-src="/images/sj-logo/{{sj.Logo}}" class="card-img-top" alt="{{sj.Name}}"
+                                    title="{{sj.Name}}">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title fw-bold">
+                                    <a href="{{sj.Id}}">{{sj.Name}}</a>
+                                </h3>
+                                <br>
+                                <h6 class="card-subtitle mb-2 text-muted align-content-center">10 câu trắc nghiệm <br>
+                                    Thời gian
+                                    : 10p
+                                </h6>
+                            </div>
+                            <div class="card-footer text-danger fs-5">
+                                <p class="float-start m-0">Free</p>
+                                <a name="" id="" class="btn btn-primary  start-quiz float-end" href="#" role="button">Start</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <button type="button" class="btn btn-primary page-link" ng-click="first()">First</button>
+                </li>
+                <li class="page-item">
+                    <button type="button" class="btn btn-primary page-link" ng-click="prev()">Previous</button>
+                </li>
+                <li class="page-item">
+                    <button type="button" class="btn btn-primary page-link" ng-click="next()">Next</button>
+                </li>
+                <li class="page-item">
+                    <button type="button" class="btn btn-primary page-link" ng-click="last()">Last</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>

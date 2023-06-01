@@ -1,0 +1,53 @@
+<section class="page-section" id="feedback">
+    <div class="container-fluid mb-5">
+        <div class="introduction-faqs text-center fs-1">
+            <p class="p1 m-0">FEEDBACK</p>
+            <div class="line mx-auto"></div>
+            <p class="p2"></p>
+        </div>
+
+        <div class="container">
+            <div class="content-feedback">
+                <div class="row">
+                    <div class="pic-caption col-xs-12 col-lg-12 mb-5">
+                        <h4 class="text-center text-pic-caption">Chân thành cảm ơn Bạn đã ghé thăm FQuizpoly. Chúng tôi
+                            quan tâm
+                            đến yêu
+                            cầu và ý kiến
+                            đóng góp của Bạn. Xin vui lòng để lại thông tin và lời nhắn để chúng tôi có thể liên hệ đến
+                            bạn sớm
+                            nhất có thể.
+                        </h4>
+                        <!-- <img src="images/logo.png" alt="" class="w-100"> -->
+                    </div>
+
+                    <div class="form-feedback col-xs-12 col-lg-12 px-3">
+
+                        <form action="" id="feedback-form">
+
+                            <div class="mb-3 mt-3">
+                                <label for="name" class="form-label fs-5">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label fs-5">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label fs-5">Subject:</label>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label fs-5">Message:</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+
+                            <button onclick="sendMail()" class="btn btn-primary mb-3">Send Feedback</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

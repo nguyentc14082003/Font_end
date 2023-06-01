@@ -1,0 +1,71 @@
+<main>
+  <div class="main-header">
+    <div class=" container px-4 px-lg-5 h-100">
+      <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-8 align-self-end">
+          <h1 class="text-white font-weight-bold">"If you have time to stop, then use that time to move forward" <h5
+              class="text-white">- One Punch Man | Saitama -</h5>
+          </h1>
+          <hr class="divider border-danger" />
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+          <p class="text-white-50 mb-5">"Nếu có thời gian để dừng lại thì hãy dùng thời gian đó để tiến lên"</p>
+          <a class="btn opacity-75 btn-xl btnStartNow" id="btnStartNow" href="#!learning" data-bs-toggle="modal"
+            data-bs-target="#startNow" ng-hide="success">Start
+            now !</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="counter-section-container">
+    <div id="counter-box-container">
+      <div class="row mt-4 ">
+        <div id="counter-box" class="col-xs-12 col-md-4 col-lg-4">
+          <div class="numberCounter">
+            <span class="counter" data-number="1000"></span>
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div id="line-counter"></div>
+          <h3>Registered students</h3>
+        </div>
+
+        <div id="counter-box" class="col-xs-12 col-md-4 col-lg-4 mx-md-5 mx-lg-5">
+          <div class="numberCounter">
+            <span class="counter" data-number="20"></span>
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div id="line-counter"></div>
+          <h3>Quizzes</h3>
+        </div>
+        <div id="counter-box" class="col-xs-12 col-md-4 col-lg-4">
+          <div class="numberCounter">
+            <span class="counter" data-number="11"></span>
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div id="line-counter"></div>
+          <h3>Training facilities</h3>
+        </div>
+      </div>
+      <a class="btn btn-primary  btnLanding pt-3 mb-3" href="#!learning" role="button">Learn to Code </a>
+    </div>
+  </div>
+
+  <div class="slick-carousel mt-4 mb-4">
+    <div class="container">
+      <div class="introduction text-center fs-1 fw-bold mb-5">
+        <p class="p1 m-0 text-uppercase">programming languages</p>
+        <div class="line mx-auto"></div>
+      </div>
+      <div class="row">
+        <article class="quiz-item col-xs-6 col-md-6 col-lg-3 mb-3" ng-repeat="lan in listLans">
+          <div class="card border-0">
+            <a href="#">
+              <img ng-src="images/lan-logos/{{lan.name}}.png" class="card-img-top" alt="{{lan.title}}"
+                title="{{lan.title}}" height="250px">
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</main>

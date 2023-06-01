@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/graduated.png" />
+    <title>FQuiz Poly</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="js/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slick.css">
+
+</head>
+
+<body>
+    <div class="container-fluid menuNav">
+        <nav id="mynavbarID" class="navbar nav-pills navbar-expand-xl fixed-top bg-body-tertiary p-0">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" class="imglogo" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#togglerNavbar"
+                    aria-controls="togglerNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="togglerNavbar"
+                    aria-labelledby="togglerNavbarLabel">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body ms-5">
+                        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="list_subject.html">Learning</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#contact">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Posts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#faqs">Q&A</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#feedback">Feedback</a>
+                            </li>
+                        </ul>
+                        <div class="register_login_button">
+                            <button class="btn btnLogin fs-4 fw-bold border-dark" type="button" data-bs-toggle="modal"
+                                data-bs-target="#startNow" id="login">Login</button>
+                            <button class="btn btn-danger border-white btnRegister fs-4 fw-bold" type="button"
+                                data-bs-toggle="modal" data-bs-target="#startNow" id="register">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="startNow" tabindex="-1" aria-labelledby="startNowLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <ul class="nav nav-tabs nav-fill" id="tabLogin" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab"
+                                data-bs-target="#login-tab-pane" type="button" role="tab" aria-controls="login-tab-pane"
+                                aria-selected="true">Login</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab"
+                                data-bs-target="#register-tab-pane" type="button" role="tab"
+                                aria-controls="register-tab-pane" aria-selected="false">Register</button>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="form-login-register">
+                        <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel"
+                            aria-labelledby="login-tab" tabindex="0">
+                            <div class="container">
+                                <form class="row mt-3 mb-3">
+                                    <div class="mb-3 col-12">
+                                        <input type="text" name="username" id="username" class="form-control"
+                                            placeholder="Username">
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            placeholder="Please enter password">
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <button class="btn btn-primary form-control" type="button">Login</button>
+                                    </div>
+                                    <a href="#" class="text-decoration-none col-xs-12 col-lg-6 text-xl-start"
+                                        data-bs-toggle="modal" data-bs-target="#modal-forgotPass">Forgot password</a>
+                                    <a href="#" class="text-decoration-none col-xs-12 col-lg-6 text-xl-end"
+                                        id="switchTab">Register</a>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab"
+                            tabindex="0">
+                            <div class="container">
+                                <form class="row mt-3 mb-3">
+                                    <div class="mb-3 col-12">
+                                        <input type="text" name="username" id="username" class="form-control"
+                                            placeholder="Username">
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            placeholder="Please enter password">
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <input type="text" name="fullname" id="fullname" class="form-control"
+                                            placeholder="Your fullname">
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <input type="text" name="Email" id="Email" class="form-control"
+                                            placeholder="Email">
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <label for="birthday" class=" mb-1 fw-bold">Birthday</label>
+                                        <input type="date" name="birthday" id="birthday" class="form-control">
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary form-control" type="button">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal trigger button -->
+
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="modal-forgotPass" tabindex="-1" role="dialog" aria-labelledby="modal-forgot"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modal-forgot">
+                        Forgot password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="youremail" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" id="youremail" placeholder="abc@mail.com">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main style="margin-top: 70px;">
+        <section class="page-section" data-bs-spy="scroll" data-bs-target="#mynavbarID"
+            data-bs-root-margin="0px 0px -10%" id="learning" data-bs-smooth-scroll="true" tabindex="0">
+            <div class="container-fluid p-0">
+                <div class="introduction text-center fs-1">
+                    <p class="p1 m-0">LEARNING</p>
+                    <div class="line mx-auto"></div>
+                    <p class="fw-bold fs-1 text-dark">LẬP TRÌNH ANDROID NÂNG CAO </p>
+                </div>
+                <div class="container">
+                    <div class="list-quiz">
+                        <div class="clock d-flex align-items-center justify-content-center m-3">
+                            <h1 class="m-0 fw-bold"><i class="bi bi-alarm"></i>10:00</h1>
+                        </div>
+                        <div class="card">
+                            <div class="card-header fs-2 fw-semibold bg-info text-white ">
+                                <div class="right float-start">
+                                    <h5 class="m-2">Lập trình android nâng cao</h5>
+                                </div>
+                                <div class="left float-end">
+                                    <h5 class="m-2">Question 1 of 10</h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="question-content ">
+                                    <h2 class="fw-bold">Phương thức nào của Camera được sử dụng để lấy các thông số
+                                        thiết lập cho Camera</h2>
+                                    <hr>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="your-answer" id="ans1">
+                                    <label class="form-check-label" for="ans1">
+                                        setParamater
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="your-answer" id="ans2">
+                                    <label class="form-check-label" for="ans2">
+                                        setParamaters
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="your-answer" id="ans3">
+                                    <label class="form-check-label" for="ans3">
+                                        getParamater
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="your-answer" id="ans4">
+                                    <label class="form-check-label" for="ans4">
+                                        getParamater
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="buttons bg-dark-subtle p-3 ">
+                                <button class="btn btn-info btn-lg float-start text-white" type="button">SUBMIT</button>
+                                <button class="btn btn-success btn-lg float-end" type="button">Điểm 0/10</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container-fluid p-0 mt-3">
+            <div class="footer-content bg-secondary-subtle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 introduction footer-column mt-3 mb-3">
+                            <div class="logo-fquizpoly">
+                                <img src="images/logo.png" alt="fquizpoly">
+                            </div>
+                            <h5>
+                                FQuizpoly là nền tảng trực tuyến giúp người dùng củng cố các kiến thức lập trình thông
+                                qua làm các bài
+                                trắc nghiệm
+                            </h5>
+                            <a href="https://www.facebook.com/anhbuacudon" title="Facebook" target="_blank"
+                                class="social-button-fb">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a href="https://github.com/nguyentc14082003" title="Youtube" target="_blank"
+                                class="social-button-gh">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a href="https://www.instagram.com/nguyeenx_nguyeenx/" title="Instagram" target="_blank"
+                                class="social-button-ig">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-lg-3 links footer-column mt-3 mb-3">
+                            <h4>Links</h4>
+                            <p><a href="list_subject.html" class="link-menu" title="Learning">Learning</a></p>
+                            <p><a href="index.html#about" class="link-menu" title="about">About</a></p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-lg-3 help footer-column mt-3 mb-3">
+                            <h4>Help</h4>
+                            <p><a href="index.html#contact" class="link-menu" title="contat">Contact</a></p>
+                            <p><a href="index.html#faqs" class="link-menu" title="Q&A">Q&A</a></p>
+                            <p><a href="index.html#feedback" class="link-menu" title="Feedback">feedback</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="js/slick.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fquizpolyApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="images/logo/graduated.png" />
+  <title>FQuiz Poly</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="js/slick-1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="bs-icon/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/sweetalert2.min.css">
+
+  <script src="js/angular/angular.js"></script>
+  <script src="js/angular/angular-route.js"></script>
+  <script src="js/app/appQuiz.js"></script>
+
+  <script src="js/jquery.min.js"></script>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fquizpolyApp/style.css">
+  <link rel="stylesheet" href="css/fquizpolyApp/slick.css">
+
+</head>
+
+<body ng-controller="loginCtrl">
+  <header class="container-fluid menuNav">
+    <nav id="mynavbarID" class="navbar nav-pills navbar-expand-xl fixed-top bg-body-tertiary p-0">
+      <div class="container">
+        <a class="navbar-brand" href="#!" id="mainPage">
+          <img src="images/logo.png" class="imglogo" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#togglerNavbar"
+          aria-controls="togglerNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="togglerNavbar" aria-labelledby="togglerNavbarLabel">
+          <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body ms-5">
+            <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="#!learning">Learning</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#!about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#!contact">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#!faqs">Q&A</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#!feedback">Feedback</a>
+              </li>
+            </ul>
+            <div class="register_login_button">
+              <li class="list-unstyled site-btn" ng-hide="loginStatus">
+                <button class="btn btnLogin fs-4 fw-bold border-dark" type="button" data-bs-toggle="modal"
+                  data-bs-target="#startNow" id="login">Login</button>
+                <button class="btn btn-danger border-white btnRegister fs-4 fw-bold" type="button"
+                  data-bs-toggle="modal" data-bs-target="#startNow" id="register">Register</button>
+              </li>
+
+              <li class="dropdown list-unstyled site-user" ng-show="loginStatus ">
+                <a href="#" class="dropdown-toggle text-decoration-none fs-1" data-bs-toggle="dropdown"
+                  data-bs-auto-close="true" aria-expanded="false">
+                  <i class="bi bi-person-circle"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-user list-unstyled p-2 fs-5 ">
+                  <li><a class="dropdown-item" href="#!inforUser">My information</a></li>
+                  <li><a class="dropdown-item" href="#!achievement">Achievement</a></li>
+                  <li><a class="dropdown-item" href="#!changePass">Change password</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#" ng-click="logout()">Log out</a></li>
+                </ul>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Modal trigger button -->
+  <!-- Modal -->
+  <div class="modal fade" id="startNow" tabindex="-1" aria-labelledby="startNowLabel" aria-hidden="true"
+    ng-hide="loginStatus">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <ul class="nav nav-tabs nav-fill" id="tabLogin" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane"
+                type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-tab-pane"
+                type="button" role="tab" aria-controls="register-tab-pane" aria-selected="false">Register</button>
+            </li>
+
+          </ul>
+          <div class="tab-content" id="form-login-register">
+            <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab"
+              tabindex="0">
+              <div class="container">
+                <form class="row mt-3 mb-3" ng-submit="loginForm()" novalidate name="login_form">
+                  <div class="mb-3 col-12">
+                    <input type="text" name="txtUsername" id="username" class="form-control" placeholder="Username"
+                      ng-model="username" ng-required="true"
+                      ng-class="{'is-invalid': login_form.txtUsername.$dirty && login_form.txtUsername.$error.required}">
+                    <span class="invalid-feedback"
+                      ng-show="login_form.txtUsername.$dirty && login_form.txtUsername.$error.required">Username is a
+                      required field.</span>
+                  </div>
+                  <div class="mb-3 col-12"> 
+                    <input type="password" name="txtPassword" id="password" class="form-control"
+                      placeholder="Please enter password" ng-model="password" ng-required="true"
+                      ng-class="{'is-invalid': login_form.txtPassword.$dirty && login_form.txtPassword.$error.required}">
+                    <span class="invalid-feedback"
+                      ng-show="login_form.txtPassword.$dirty && login_form.txtPassword.$error.required">Password is a
+                      required field.</span>
+                  </div>
+                  <div cla ss="mb-3 col-12">
+                    <button class="btn btn-primary form-control" type="submit"
+                      ng-disabled="login_form.$pristine">Login</button>
+                  </div>
+                  <a href="#" class="text-decoration-none col-xs-12 col-lg-6 text-xl-start" data-bs-toggle="modal"
+                    data-bs-target="#modal-forgotPass">Forgot password</a>
+                  <a href="#" class="text-decoration-none col-xs-12 col-lg-6 text-xl-end" id="switchTab">Register</a>
+                </form>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab"
+              tabindex="0">
+              <div class="container">
+                <form class="row mt-3 mb-3">
+                  <div class="mb-3 col-12">
+                    <input type="text" name="reusername" id="reusername" class="form-control" placeholder="Username">
+                  </div>
+                  <div class="mb-3 col-12">
+                    <input type="password" name="repassword" id="repassword" class="form-control"
+                      placeholder="Please enter password">
+                  </div>
+                  <div class="mb-3 col-12">
+                    <input type="text" name="refullname" id="refullname" class="form-control"
+                      placeholder="Your fullname">
+                  </div>
+                  <div class="mb-3 col-12">
+                    <input type="text" name="reEmail" id="reEmail" class="form-control" placeholder="Email">
+                  </div>
+                  <div class="mb-3 col-12">
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="infSchoolfee" name="infSchoolfee"
+                        placeholder="School fee" required>
+                      <div class="input-group-text">VNĐ</div>
+                    </div>
+                  </div>
+                  <div class="mb-3 col-12">
+                    <div class="form-check">
+                      <input id="cboAgree" class="form-check-input" type="checkbox" name="" value="true">
+                      <label for="cboAgree" class="form-check-label">I agree to FQuizpoly <a
+                          href="https://en.wikipedia.org/wiki/Terms_of_service" target="_blank">Terms of
+                          use</a></label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary form-control" type="button">Register</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Body -->
+  <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+  <div class="modal fade" id="modal-forgotPass" tabindex="-1" role="dialog" aria-labelledby="modal-forgot"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="modal-forgot">
+            Forgot password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="youremail" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="youremail" placeholder="abc@mail.com">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="justify-content-center">
+    <div ng-view></div>
+  </div>
+
+  <footer>
+    <div class="container-fluid p-0">
+      <div class="footer-content bg-secondary-subtle">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 introduction footer-column mt-3 mb-3">
+              <div class="logo-fquizpoly">
+                <img src="images/logo.png" alt="fquizpoly">
+              </div>
+              <h5>
+                FQuizpoly là nền tảng trực tuyến giúp người dùng củng cố các kiến thức lập trình thông qua làm các bài
+                trắc nghiệm
+              </h5>
+              <a href="https://www.facebook.com/anhbuacudon" title="Facebook" target="_blank" class="social-button-fb">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="https://github.com/nguyentc14082003" title="Youtube" target="_blank" class="social-button-gh">
+                <i class="bi bi-github"></i>
+              </a>
+              <a href="https://www.instagram.com/nguyeenx_nguyeenx/" title="Instagram" target="_blank"
+                class="social-button-ig">
+                <i class="bi bi-instagram"></i>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3 links footer-column mt-3 mb-3">
+              <h4>Links</h4>
+              <p><a href="#learning" class="link-menu" title="Learning">Learning</a></p>
+              <p><a href="#about" class="link-menu" title="about">About</a></p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3 help footer-column mt-3 mb-3">
+              <h4>Help</h4>
+              <p><a href="#contact" class="link-menu" title="contat">Contact</a></p>
+              <p><a href="#faqs" class="link-menu" title="Q&A">Q&A</a></p>
+              <p><a href="#feedback" class="link-menu" title="Feedback">feedback</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  <script src="js/app/listSubjectsCtrl.js"></script>
+  <script src="js/app/inforUserCtrl.js"></script>
+  <script src="js/app/loginCtrl.js"></script>
+  <script src="js/slick-1.8.1/slick/slick.min.js"></script>
+  <script src="js/sweetalert2.min.js"></script>
+  <script src="js/bs5/bootstrap.bundle.js"></script>
+  <script src="js/counter.js"></script>
+  <script src="js/scripts.js"></script>
+
+</body>
+
+</html>
