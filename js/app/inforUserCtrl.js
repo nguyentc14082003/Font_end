@@ -4,7 +4,7 @@ app.controller(
     $rootScope.student.birthday = new Date($rootScope.student.birthday);
     let inf_student = angular.copy($rootScope.student);
     let id = $rootScope.student.id;
-    console.log(id);
+    console.log(inf_student);
     $scope.updateInf = function () {
       event.preventDefault();
       $scope.isEditing = true;
@@ -26,11 +26,13 @@ app.controller(
             icon: "success",
             title: "Successfully updated !",
           });
+          alert("true");
           $scope.isEditing = false;
+          return false;
         })
         .catch(function (error) {
           console.error("Lỗi khi cập nhật thông tin sinh viên:", error);
-        
+          alert("false");
         });
     };
 
