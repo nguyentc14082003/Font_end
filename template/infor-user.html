@@ -7,7 +7,7 @@
             <div class="content-infor pt-5">
                 <div class="row">
                     <div class="form-feedback col-xs-12 col-lg-12 px-3 mb-5">
-                        <form id="infor-form" name="inforForm" action="#">.
+                        <form id="infor-form" name="inforForm" ng-submit="saveInf()">.
                             <div class="mb-3">
                                 <button class="btn btn-outline-warning text-black btn-sm fs-3" title="Update infmation"
                                     ng-click="updateInf()"><i class="bi bi-pencil-square"></i>Update
@@ -17,27 +17,44 @@
                                 <label for="infName" class="form-label fs-5 fw-bold">Fullname: <span
                                         class="text-danger fst-italic">(*)</span></label>
                                 <input type="text" class="form-control" id="infName" name="infName"
-                                    ng-model="student.fullname" ng-disabled="!isEditing">
+                                    ng-model="student.fullname" ng-disabled="!isEditing" ng-required="true"
+                                    ng-class="{'is-invalid': inforForm.infName.$dirty && inforForm.infName.$error.required}">
+                                <span class="invalid-feedback"
+                                    ng-show="inforForm.infName.$dirty && inforForm.infName.$error.required">Fullname
+                                    is a required field.</span>
                             </div>
 
                             <div class="mb-3">
                                 <label for="infEmail" class="form-label fs-5 fw-bold">Email:<span
                                         class="text-danger fst-italic">(*)</span></label>
                                 <input type="email" class="form-control" id="infEmail" name="infEmail"
-                                    ng-model="student.email" ng-disabled="!isEditing">
+                                    ng-model="student.email" ng-disabled="!isEditing" ng-required="true"
+                                    ng-class="{'is-invalid': inforForm.infEmail.$dirty && inforForm.infEmail.$error.required}">
+                                <span class="invalid-feedback"
+                                    ng-show="inforForm.infEmail.$dirty && inforForm.infEmail.$error.required">Email
+                                    is a required field.</span>
                             </div>
                             <div class="mb-3">
                                 <label for="gender" class="form-label fs-5 fw-bold">Gender:</label>
                                 <select class="form-select" name="gender" id="gender" ng-disabled="!isEditing"
                                     ng-model="student.gender">
-                                    <option value="true" selected>Male</option>
+                                    <option value="true">Male</option>
                                     <option value="false" selected>Female</option>
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="infBirthday" class="form-label fs-5 fw-bold">Birthday:</label>
                                 <input type="date" class="form-control" id="infBirthday" name="infBirthday"
-                                    ng-model="student.birthday" ng-disabled="!isEditing">
+                                    ng-model="student.birthday" ng-disabled="!isEditing" ng-required="true"
+                                    ng-pattern="" min="1920-01-01"
+                                    ng-class="{'is-invalid': inforForm.infBirthday.$dirty && inforForm.infBirthday.$error.required || isUnderage()}">
+                                <span class="invalid-feedback" ng-show="isUnderage()">You must be at least 12 years
+                                    old.</span>
+                                <span class="invalid-feedback"
+                                    ng-show="inforForm.infBirthday.$dirty && inforForm.infBirthday.$error.required">Birthday
+                                    is a required field.
+                                </span>
+
                             </div>
 
                             <div class="mb-3 ">
@@ -45,15 +62,26 @@
                                         class="text-danger fst-italic">(*)</span></label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="infSchoolfee" name="infSchoolfee"
-                                        ng-model="student.schoolfee" ng-disabled="!isEditing">
+                                        ng-model="student.schoolfee" ng-disabled="!isEditing" ng-required="true"
+                                        ng-pattern="/^\d+$/"
+                                        ng-class="{'is-invalid': inforForm.infSchoolfee.$dirty && 
+                                        (inforForm.infSchoolfee.$error.required || inforForm.infSchoolfee.$error.pattern)}">
                                     <div class="input-group-text">VNĐ</div>
+                                    <span class="invalid-feedback" ng-show="inforForm.infSchoolfee.$error.pattern">
+                                        School fee must be a number.
+                                    </span>
+                                    <span class="invalid-feedback"
+                                        ng-show="inforForm.infSchoolfee.$dirty && inforForm.infSchoolfee.$error.required">
+                                        School fee is a required field.
+                                    </span>
                                 </div>
+
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button class="btn btn-lg btn-secondary mb-3 me-3" ng-click="cancelEdit()"
                                     ng-disabled="!isEditing">Cancel</button>
-                                <button class="btn btn-lg btn-primary mb-3 ms-3" ng-disabled="!isEditing"
-                                    ng-click="saveInf()">Save</button>
+                                <button class="btn btn-lg btn-primary mb-3 ms-3"
+                                    ng-disabled="!isEditing || inforForm.$invalid || isUnderage()" type="submit">Save</button>
                             </div>
                         </form>
                     </div>

@@ -120,7 +120,7 @@
                       ng-show="login_form.txtUsername.$dirty && login_form.txtUsername.$error.required">Username is a
                       required field.</span>
                   </div>
-                  <div class="mb-3 col-12"> 
+                  <div class="mb-3 col-12">
                     <input type="password" name="txtPassword" id="password" class="form-control"
                       placeholder="Please enter password" ng-model="password" ng-required="true"
                       ng-class="{'is-invalid': login_form.txtPassword.$dirty && login_form.txtPassword.$error.required}">
@@ -130,7 +130,7 @@
                   </div>
                   <div cla ss="mb-3 col-12">
                     <button class="btn btn-primary form-control" type="submit"
-                      ng-disabled="login_form.$pristine">Login</button>
+                      ng-disabled="login_form.$invalid">Login</button>
                   </div>
                   <a href="#" class="text-decoration-none col-xs-12 col-lg-6 text-xl-start" data-bs-toggle="modal"
                     data-bs-target="#modal-forgotPass">Forgot password</a>
@@ -142,25 +142,27 @@
             <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab"
               tabindex="0">
               <div class="container">
-                <form class="row mt-3 mb-3">
+                <form class="row mt-3 mb-3" name="register_form" ng-submit="register()">
                   <div class="mb-3 col-12">
-                    <input type="text" name="reusername" id="reusername" class="form-control" placeholder="Username">
+                    <input type="text" name="reusername" id="reusername" class="form-control" placeholder="Username"
+                      ng-model="reStudent.username">
                   </div>
                   <div class="mb-3 col-12">
                     <input type="password" name="repassword" id="repassword" class="form-control"
-                      placeholder="Please enter password">
+                      placeholder="Please enter password" ng-model="reStudent.password">
                   </div>
                   <div class="mb-3 col-12">
                     <input type="text" name="refullname" id="refullname" class="form-control"
-                      placeholder="Your fullname">
+                      placeholder="Your fullname" ng-model="reStudent.fullname">
                   </div>
                   <div class="mb-3 col-12">
-                    <input type="text" name="reEmail" id="reEmail" class="form-control" placeholder="Email">
+                    <input type="text" name="reEmail" id="reEmail" class="form-control" placeholder="Email"
+                      ng-model="reStudent.email">
                   </div>
                   <div class="mb-3 col-12">
                     <div class="input-group">
                       <input type="text" class="form-control" id="infSchoolfee" name="infSchoolfee"
-                        placeholder="School fee" required>
+                        placeholder="School fee" ng-model="reStudent.schoolfee">
                       <div class="input-group-text">VNĐ</div>
                     </div>
                   </div>
@@ -173,7 +175,7 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <button class="btn btn-primary form-control" type="button">Register</button>
+                    <button class="btn btn-primary form-control" type="submit">Register</button>
                   </div>
                 </form>
               </div>
