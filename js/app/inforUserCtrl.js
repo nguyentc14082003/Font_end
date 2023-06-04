@@ -39,6 +39,13 @@ app.controller(
       $rootScope.student = angular.copy(inf_student);
       $scope.isEditing = false;
     };
+    $scope.isGender = function () {
+      if($scope.student.gender == 0){
+        return false;
+      }else{
+        return true;
+      }
+    };
     $scope.isUnderage = function () {
       if ($scope.student.birthday) {
         var selectedDate = new Date($scope.student.birthday);

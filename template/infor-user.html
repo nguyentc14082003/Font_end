@@ -37,10 +37,11 @@
                             <div class="mb-3">
                                 <label for="gender" class="form-label fs-5 fw-bold">Gender:</label>
                                 <select class="form-select" name="gender" id="gender" ng-disabled="!isEditing"
-                                    ng-model="student.gender">
+                                    ng-model="student.gender" ng-class="{'is-invalid': !isGender()}">
                                     <option value="true">Male</option>
-                                    <option value="false" selected>Female</option>
+                                    <option value="false">Female</option>
                                 </select>
+                                <span class="invalid-feedback" ng-show="!isGender()">Please choose your gender</span>
                             </div>
                             <div class="mb-3">
                                 <label for="infBirthday" class="form-label fs-5 fw-bold">Birthday:</label>
@@ -81,7 +82,8 @@
                                 <button class="btn btn-lg btn-secondary mb-3 me-3" ng-click="cancelEdit()"
                                     ng-disabled="!isEditing">Cancel</button>
                                 <button class="btn btn-lg btn-primary mb-3 ms-3"
-                                    ng-disabled="!isEditing || inforForm.$invalid || isUnderage()" type="submit">Save</button>
+                                    ng-disabled="!isEditing || inforForm.$invalid || isUnderage()"
+                                    type="submit">Save</button>
                             </div>
                         </form>
                     </div>

@@ -153,7 +153,11 @@
                   </div>
                   <div class="mb-3 col-12">
                     <input type="text" name="refullname" id="refullname" class="form-control"
-                      placeholder="Your fullname" ng-model="reStudent.fullname">
+                      placeholder="Your fullname" ng-model="reStudent.fullname"
+                      ng-class="{'is-invalid': register_form.refullname.$dirty && register_form.refullname.$error.required}">
+                    <span class="invalid-feedback"
+                      ng-show="register_form.refullname.$dirty && register_form.refullname.$error.required">Fullname
+                      is a required field.</span>
                   </div>
                   <div class="mb-3 col-12">
                     <input type="text" name="reEmail" id="reEmail" class="form-control" placeholder="Email"
@@ -257,7 +261,7 @@
   </div>
 
   <script src="js/app/listSubjectsCtrl.js"></script>
-  <script src="js/app/inforUserCtrl.js"></script>
+  <script src="js/app/accountCtrl.js"></script>
   <script src="js/app/loginCtrl.js"></script>
   <script src="js/slick-1.8.1/slick/slick.min.js"></script>
   <script src="js/sweetalert2.min.js"></script>
