@@ -1,0 +1,88 @@
+<section class="page-section" data-bs-spy="scroll" data-bs-target="#mynavbarID" data-bs-root-margin="0px 0px -10%"
+    id="learning" data-bs-smooth-scroll="true" tabindex="0">
+    <div class="container-fluid p-0">
+        <div class="introduction text-center fs-1">
+            <p class="p1 m-0">LEARNING</p>
+            <div class="line mx-auto"></div>
+            <small class="fst-italic text-secondary-emphasis">A goal without a deadline is just a dream.</small>
+        </div>
+        <div class="container">
+            <div class="list-quiz">
+                <div class="row align-items-center justify-content-center my-3">
+                    <div class="col-12 text-center mb-3">
+                        <button class="btn btn-primary fs-3 fw-bold" ng-click="startQuiz()"
+                            ng-hide="startDoing">Start</button>
+                    </div>
+                    <div class="col-12 text-center">
+                        <h1 class="m-0 fw-bold "><i class="bi bi-alarm"></i>
+                            <span id="minutes">10</span> :
+                            <span id="second">00</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="card" ng-show="startDoing">
+                    <div class="card-header fs-2 fw-semibold bg-info text-white ">
+                        <div class="right float-start">
+                            <h5 class="m-2">{{subjectName}} : {{subjectID}}</h5>
+                        </div>
+                        <div class="left float-end">
+                            <h5 class="m-2">Question {{currentQuestionIndex+1}} of 10</h5>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="question-content">
+                            <h2 class="fw-bold">{{currentQuestionIndex+1}}: {{showQuestions[currentQuestionIndex].Text}}
+                            </h2>
+                            <hr>
+                        </div>
+                        <div class="form-check mb-2" ng-repeat="text in showQuestions[currentQuestionIndex].Answers">
+                            <input class="form-check-input" type="radio" name="myAns" value="{{text.Id}}"
+                                id="{{text.Id}}">
+                            <label class="form-check-label" for="{{text.Id}}">
+                                {{text.Text}}
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <div class="card-body" ng-repeat="qs in showQuestions|limitTo:1:begin">
+                        <div class="question-content ">
+                            <h2 class="fw-bold">{{$index+1}}: {{qs.Text}}</h2>
+                            <hr>
+                        </div>
+                        <div class="form-check mb-2" ng-repeat="text in qs.Answers">
+                            <input class="form-check-input" type="radio" name="myAns" value="{{text.Id}}"
+                                id="{{text.Id}}">
+                            <label class="form-check-label" for="{{text.Id}}">
+                                {{text.Text}}
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="buttons bg-dark-subtle p-3 ">
+                        <button class="btn btn-primary btn-lg float-start text-white d-sm-inline-block" type="button"
+                            ng-click="showNextQuestion()" ng-show="isAnswered">Next Question</button>
+                        <span class="text-success fs-3 ms-3 fw-bold" ng-show="correctAnswerId">You answered
+                            correctly</span>
+                        <span class="text-danger fs-3 ms-3 fw-bold" ng-show="incorrectAnswerId">You answered
+                            incorrectly</span>
+                        <button class="btn btn-primary btn-lg float-start text-white" type="button"
+                            ng-click="checkAnswer()" ng-hide="isAnswered">SUBMIT</button>
+
+                        <span class="px-3 py-1 rounded-3 float-lg-end d-sm-inline-block fs-3 text-white bg-success"><span>{{score}}</span>/10
+                            Point</span>
+                    </div>
+                </div>
+
+                <div class="card w-50 mx-auto " ng-show="isLastQuestion"> <!--(startDoing && !timeOut) || hide-->
+                    <div class="card-header  bg-success-subtle fs-2 fw-bold text-center">
+                        KẾT QUẢ
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">You answer correctly <strong class="text-danger">{{score}}</strong> the question</h2>
+                        <h2 class="card-title">Your point: <strong class="text-danger">{{score}}</strong></h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>

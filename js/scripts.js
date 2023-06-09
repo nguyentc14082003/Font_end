@@ -13,46 +13,6 @@ mainPage.addEventListener("click", () => {
   });
 });
 
-// // Lấy tất cả các phầxn tử section có id
-// var sections = document.querySelectorAll("section[id]");
-// var header = document.querySelectorAll(".main-header");
-
-// // Thêm sự kiện lăn chuột để tô đậm liên kết nav tương ứng với phần tử section được lăn chuột tới
-// window.addEventListener("scroll", function () {
-//   // Lấy vị trí hiện tại của trình duyệt
-//   var currentScrollPos =
-//     window.pageYOffset ||
-//     document.documentElement.scrollTop ||
-//     document.body.scrollTop ||
-//     0;
-//   // Lặp qua tất cả các phần tử section
-//   sections.forEach(function (section) {
-//     // Lấy vị trí bắt đầu và kết thúc của phần tử section
-//     var sectionTop = section.offsetTop - 80;
-//     var sectionBottom = sectionTop + section.offsetHeight;
-//     // Nếu vị trí hiện tại nằm trong khoảng của phần tử section thì tô đậm liên kết nav tương ứng
-//     if (currentScrollPos >= sectionTop && currentScrollPos <= sectionBottom) {
-//       // Lấy href của liên kết nav tương ứng
-//       var id = section.getAttribute("id");
-//       var navLink = document.querySelector('a[href="#' + id + '"]');
-//       // Xóa lớp "active" khỏi tất cả các liên kết nav
-//       navLinks.forEach(function (link) {
-//         link.classList.remove("clicked");
-//       });
-//       // Thêm lớp "active" cho liên kết nav tương ứng với phần tử section đang hiển thị
-//       navLink.classList.add("clicked");
-//     } else {
-//       header.forEach(function (header) {
-//         var headersquare = header.offsetHeight - 75;
-//         if (currentScrollPos < headersquare) {
-//           navLinks.forEach(function (link) {
-//             link.classList.remove("clicked");
-//           });
-//         }
-//       });
-//     }
-//   });
-// });
 function sendMail() {
   document
     .getElementById("feedback-form")

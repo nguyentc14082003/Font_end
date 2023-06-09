@@ -214,6 +214,8 @@ body {
 
 #contact .introduction-contact .p1,
 .introduction-faqs .p1 {
+    padding-top: 2rem;
+    height: 10rem;
     font-size: 1.8em;
     font-weight: bold;
     color: rgb(30, 38, 109);
@@ -275,7 +277,6 @@ body {
 
 section {
     margin-top: 70px;
-    height: 800px;
 }
 
 .page-inforUser .introduction-infor {

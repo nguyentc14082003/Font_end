@@ -142,44 +142,74 @@
             <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab"
               tabindex="0">
               <div class="container">
-                <form class="row mt-3 mb-3" name="register_form" ng-submit="register()">
+                <form class="row mt-3 mb-3" novalidate ng-submit="register()" name="register_form">
                   <div class="mb-3 col-12">
                     <input type="text" name="reusername" id="reusername" class="form-control" placeholder="Username"
-                      ng-model="reStudent.username">
+                      ng-model="reStudent.username" ng-required="true"
+                      ng-class="{'is-invalid': register_form.reusername.$dirty && register_form.reusername.$error.required}">
+                    <span class="invalid-feedback"
+                      ng-show="register_form.reusername.$dirty && register_form.reusername.$error.required">Username is
+                      required.</span>
                   </div>
                   <div class="mb-3 col-12">
                     <input type="password" name="repassword" id="repassword" class="form-control"
-                      placeholder="Please enter password" ng-model="reStudent.password">
+                      placeholder="Please enter password" ng-model="reStudent.password" ng-required="true"
+                      ng-class="{'is-invalid': register_form.repassword.$dirty && register_form.repassword.$error.required}">
+                    <span class="invalid-feedback"
+                      ng-show="register_form.repassword.$dirty && register_form.repassword.$error.required">Password is
+                      required.</span>
                   </div>
                   <div class="mb-3 col-12">
                     <input type="text" name="refullname" id="refullname" class="form-control"
-                      placeholder="Your fullname" ng-model="reStudent.fullname"
-                      ng-class="{'is-invalid': register_form.refullname.$dirty && register_form.refullname.$error.required}">
+                      placeholder="Your fullname" ng-model="reStudent.fullname" ng-required="true"
+                      ng-pattern="/^[^\d]+$/" ng-class="{'is-invalid': register_form.refullname.$dirty && register_form.refullname.$error.required
+                      || register_form.refullname.$error.pattern}">
                     <span class="invalid-feedback"
-                      ng-show="register_form.refullname.$dirty && register_form.refullname.$error.required">Fullname
-                      is a required field.</span>
+                      ng-show="register_form.refullname.$dirty && register_form.refullname.$error.required">Fullname is
+                      required.</span>
+                    <span class="invalid-feedback" ng-show="register_form.refullname.$error.pattern">Fullname
+                      should not contain numbers.</span>
                   </div>
                   <div class="mb-3 col-12">
-                    <input type="text" name="reEmail" id="reEmail" class="form-control" placeholder="Email"
-                      ng-model="reStudent.email">
+                    <input type="email" name="reEmail" id="reEmail" class="form-control" placeholder="Email"
+                      ng-model="reStudent.email" ng-required="true" ng-pattern="/^\w+@\w+\.(com|edu\.vn)$/" ng-class="{'is-invalid': register_form.reEmail.$dirty && register_form.reEmail.$error.required
+                      || register_form.reEmail.$error.pattern}">
+                    <span class="invalid-feedback"
+                      ng-show="register_form.reEmail.$dirty && register_form.reEmail.$error.required">Email is
+                      required.</span>
+                    <span class="invalid-feedback" ng-show="register_form.reEmail.$error.pattern">Invalid email
+                      format</span>
                   </div>
                   <div class="mb-3 col-12">
                     <div class="input-group">
                       <input type="text" class="form-control" id="infSchoolfee" name="infSchoolfee"
-                        placeholder="School fee" ng-model="reStudent.schoolfee">
+                        placeholder="School fee" ng-model="reStudent.schoolfee" ng-required="true" ng-pattern="/^\d+$/"
+                        ng-class="{'is-invalid': register_form.infSchoolfee.$dirty && 
+                        (register_form.infSchoolfee.$error.required || register_form.infSchoolfee.$error.pattern)}">
                       <div class="input-group-text">VNĐ</div>
+                      <span class="invalid-feedback" ng-show="register_form.infSchoolfee.$error.pattern">
+                        School fee must be a number.
+                      </span>
+                      <span class="invalid-feedback"
+                        ng-show="register_form.infSchoolfee.$dirty && register_form.infSchoolfee.$error.required">
+                        School fee is a required field.
+                      </span>
                     </div>
                   </div>
                   <div class="mb-3 col-12">
                     <div class="form-check">
-                      <input id="cboAgree" class="form-check-input" type="checkbox" name="" value="true">
+                      <input id="cboAgree" class="form-check-input" type="checkbox" name="CheckAgree" value="true"
+                      ng-class="{'is-invalid': isCheck}">
                       <label for="cboAgree" class="form-check-label">I agree to FQuizpoly <a
                           href="https://en.wikipedia.org/wiki/Terms_of_service" target="_blank">Terms of
                           use</a></label>
+                      <span class="invalid-feedback" ng-show="isCheck">You must
+                        agree to the Terms of use.</span>
                     </div>
                   </div>
                   <div class="col-12">
-                    <button class="btn btn-primary form-control" type="submit">Register</button>
+                    <button class="btn btn-primary form-control" type="submit"
+                      ng-disabled="register_form.$invalid">Register</button>
                   </div>
                 </form>
               </div>
@@ -214,12 +244,12 @@
     </div>
   </div>
 
-  <div class="justify-content-center">
+  <div class="justify-content-center h-100">
     <div ng-view></div>
   </div>
 
   <footer>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 h-100">
       <div class="footer-content bg-secondary-subtle">
         <div class="container">
           <div class="row">
@@ -244,25 +274,26 @@
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3 links footer-column mt-3 mb-3">
               <h4>Links</h4>
-              <p><a href="#learning" class="link-menu" title="Learning">Learning</a></p>
-              <p><a href="#about" class="link-menu" title="about">About</a></p>
+              <p><a href="#!learning" class="link-menu" title="Learning">Learning</a></p>
+              <p><a href="#!about" class="link-menu" title="about">About</a></p>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3 help footer-column mt-3 mb-3">
               <h4>Help</h4>
-              <p><a href="#contact" class="link-menu" title="contat">Contact</a></p>
-              <p><a href="#faqs" class="link-menu" title="Q&A">Q&A</a></p>
-              <p><a href="#feedback" class="link-menu" title="Feedback">feedback</a></p>
+              <p><a href="#!contact" class="link-menu" title="contat">Contact</a></p>
+              <p><a href="#!faqs" class="link-menu" title="Q&A">Q&A</a></p>
+              <p><a href="#!feedback" class="link-menu" title="Feedback">feedback</a></p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </footer>
-  </div>
 
   <script src="js/app/listSubjectsCtrl.js"></script>
   <script src="js/app/accountCtrl.js"></script>
-  <script src="js/app/loginCtrl.js"></script>
+  <script src="js/app/inforUserCtrl.js"></script>
+  <script src="js/app/quizCtrl.js"></script>
+
   <script src="js/slick-1.8.1/slick/slick.min.js"></script>
   <script src="js/sweetalert2.min.js"></script>
   <script src="js/bs5/bootstrap.bundle.js"></script>

@@ -31,6 +31,30 @@ app.run(function ($rootScope, $http, ApiService) {
     { name: "sql", title: "SQL Server" },
     { name: "java", title: "Java" },
   ];
+
+  $rootScope.$on("$routeChangeStart", function (event, next, current) {
+    if ($rootScope.startDoing) {
+      event.preventDefault();
+
+      Swal.fire({
+        title: "Want to stop taking the quiz?",
+        text: "The quiz will stop immediately and your achievement will not be counted !",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $rootScope.startDoing = false; // Đánh dấu là đã kết thúc làm quiz
+          $rootScope.showMess = false;
+          let nextPath = next.$$route.originalPath.replace("/", "#!"); // Loại bỏ dấu '#!'
+          console.log(nextPath);
+          window.location.href = nextPath + "";
+        }
+      });
+    }
+  });
 });
 
 app.service("ApiService", function ($http) {
@@ -81,6 +105,10 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/achievement", {
       templateUrl: "template/achievement.html",
+    })
+    .when("/quiz/:id/:name", {
+      templateUrl: "template/quiz.html",
+      controller: "quizCtrl",
     })
     .otherwise({
       redirectTo: "/",

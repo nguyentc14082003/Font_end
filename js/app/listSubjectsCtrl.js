@@ -1,6 +1,6 @@
+
 app.controller("listsubjectsCtrl", function ($scope, $rootScope, ApiService) {
   $scope.pageCount = Math.ceil($rootScope.list_subjects.length / 4);
-  console.log($scope.pageCount);
 
   $scope.begin = 0;
 
@@ -23,4 +23,15 @@ app.controller("listsubjectsCtrl", function ($scope, $rootScope, ApiService) {
       $scope.begin -= 4;
     }
   };
+  $scope.loginChecked = function() {
+    if (!$rootScope.loginStatus) {
+      event.preventDefault();
+      Swal.fire({
+        icon: "info",
+        title: "You need to login!",
+        text: "Please login to continue.",
+      });
+    }
+  };
+  
 });

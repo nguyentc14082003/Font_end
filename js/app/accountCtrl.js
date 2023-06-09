@@ -74,11 +74,10 @@ app.controller("loginCtrl", function ($scope, $rootScope, ApiService) {
   $rootScope.student = {};
   $rootScope.loginForm = function () {
     if ($scope.username != null && $scope.password != null) {
-      $scope.loginStatus = false;
-      console.log($rootScope.list_user);
+      $rootScope.loginStatus = false;
       $rootScope.list_user.forEach((e, i) => {
         if (e.username == $scope.username && e.password == $scope.password) {
-          $scope.loginStatus = true;
+          $rootScope.loginStatus = true;
           return ($rootScope.student = e);
         }
       });
@@ -122,71 +121,81 @@ app.controller("loginCtrl", function ($scope, $rootScope, ApiService) {
       timer: 1500,
     });
   };
+  $scope.isCheck = false;
 
+  let check = document.getElementById("cboAgree");
+  check.addEventListener("click", function () {
+    check.classList.remove("is-invalid");
+  });
   $scope.register = function () {
-    let listUser = $rootScope.list_user;
-    let id = listUser.length + 1;
-    let checkUsername = false;
-    $rootScope.reStudent = {
-      id: id,
-      username: $scope.reStudent.username,
-      password: $scope.reStudent.password,
-      fullname: $scope.reStudent.fullname,
-      email: $scope.reStudent.email,
-      gender: 0,
-      birthday: new Date(),
-      schoolfee: $scope.reStudent.schoolfee,
-      marks: 0,
-    };
-
-    listUser.forEach((e, i) => {
-      if (e.username == $scope.reStudent.username) {
-        checkUsername = true;
-      }
-    });
-    if (checkUsername) {
-      Swal.fire({
-        icon: "warning",
-        title: "Username already registered !",
-        showConfirmButton: true,
-        allowOutsideClick: false,
-        timer: 1500,
-      });
+    if (!check.checked) {
+      check.classList.add("is-invalid");
+      $scope.isCheck = true;
     } else {
-      let data = $rootScope.reStudent;
-      console.log(data);
-      ApiService.callApi("post", "student", data)
-        .then(function (response) {
-          console.log("done: " + response);
-          Swal.fire({
-            icon: "success",
-            title: "Sign Up Success !",
-            text: "Please update some information before taking any quiz!",
-          });
-          $rootScope.student = $rootScope.reStudent;
-          console.log($rootScope.student);
-          ApiService.callApi("GET", "student")
-            .then(function (response) {
-              $rootScope.list_user = response;
-              console.log($rootScope.list_user);
-            })
-            .catch(function (error) {
-              console.error(error);
-            });
+      let listUser = $rootScope.list_user;
+      let id = listUser.length + 1;
+      let checkUsername = false;
+      $rootScope.reStudent = {
+        id: id,
+        username: $scope.reStudent.username,
+        password: $scope.reStudent.password,
+        fullname: $scope.reStudent.fullname,
+        email: $scope.reStudent.email,
+        gender: 0,
+        birthday: new Date(),
+        schoolfee: $scope.reStudent.schoolfee,
+        marks: 0,
+      };
 
-          $scope.loginStatus = true;
-          $scope.backdrop = document.querySelector(".modal-backdrop");
-          $scope.body = document.querySelector("body");
-          if ($scope.backdrop) {
-            $scope.backdrop.classList.add("d-none");
-            $scope.body.classList.remove("modal-open");
-            $scope.body.removeAttribute("style");
-          }
-          window.location.href = "#!inforUser";
-        })
-        .catch(function (error) {
-          console.error("Lỗi khi cập nhật thông tin sinh viên:", error);
+      listUser.forEach((e, i) => {
+        if (e.username == $scope.reStudent.username) {
+          checkUsername = true;
+        }
+      });
+      if (checkUsername) {
+        Swal.fire({
+          icon: "warning",
+          title: "Username already registered !",
+          showConfirmButton: true,
+          allowOutsideClick: false,
+          timer: 1500,
         });
+      } else {
+        let data = $rootScope.reStudent;
+        console.log(data);
+        ApiService.callApi("post", "student", data)
+          .then(function (response) {
+            console.log("done: " + response);
+            Swal.fire({
+              icon: "success",
+              title: "Sign Up Success !",
+              text: "Please update some information before taking any quiz!",
+            });
+            $rootScope.student = $rootScope.reStudent;
+            console.log($rootScope.student);
+            ApiService.callApi("GET", "student")
+              .then(function (response) {
+                $rootScope.list_user = response;
+                console.log($rootScope.list_user);
+              })
+              .catch(function (error) {
+                console.error(error);
+              });
+
+            $scope.loginStatus = true;
+            $scope.backdrop = document.querySelector(".modal-backdrop");
+            $scope.body = document.querySelector("body");
+            if ($scope.backdrop) {
+              $scope.backdrop.classList.add("d-none");
+              $scope.body.classList.remove("modal-open");
+              $scope.body.removeAttribute("style");
+            }
+            window.location.href = "#!inforUser";
+          })
+          .catch(function (error) {
+            console.error("Lỗi khi cập nhật thông tin sinh viên:", error);
+          });
+      }
     }
   };
 });
