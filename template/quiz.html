@@ -57,29 +57,38 @@
                         </div>
                     </div> -->
                     <div class="buttons bg-dark-subtle p-3 ">
-                        <button class="btn btn-primary btn-lg float-start text-white d-sm-inline-block" type="button"
+                        <button class="btn btn-primary btn-lg float-start text-white" type="button"
                             ng-click="showNextQuestion()" ng-show="isAnswered">Next Question</button>
-                        <span class="text-success fs-3 ms-3 fw-bold" ng-show="correctAnswerId">You answered
-                            correctly</span>
-                        <span class="text-danger fs-3 ms-3 fw-bold" ng-show="incorrectAnswerId">You answered
+                        <span class="text-success ms-3 fw-bold" ng-show="correctAnswerId" style="font-size: 1.2rem;">You
+                            answered correctly</span>
+                        <span class="text-danger ms-3 fw-bold" ng-show="incorrectAnswerId"
+                            style="font-size: 1.2rem;">You answered
                             incorrectly</span>
                         <button class="btn btn-primary btn-lg float-start text-white" type="button"
                             ng-click="checkAnswer()" ng-hide="isAnswered">SUBMIT</button>
 
-                        <span class="px-3 py-1 rounded-3 float-lg-end d-sm-inline-block fs-3 text-white bg-success"><span>{{score}}</span>/10
+                        <span
+                            class="px-3 py-1 rounded-3 float-lg-end fs-3 text-white bg-success"><span>{{score}}</span>/10
                             Point</span>
                     </div>
                 </div>
-
-                <div class="card w-50 mx-auto " ng-show="isLastQuestion"> <!--(startDoing && !timeOut) || hide-->
-                    <div class="card-header  bg-success-subtle fs-2 fw-bold text-center">
-                        KẾT QUẢ
+                <div class="box-result" ng-show="isLastQuestion">
+                    <div class="card w-50 mx-auto ">
+                        <div class="card-header  bg-success-subtle fs-2 fw-bold text-center">
+                            KẾT QUẢ
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">You answer correctly <strong class="text-danger">{{score}}</strong>
+                                the
+                                question</h2>
+                            <h2 class="card-title">Your point: <strong class="text-danger">{{score}}</strong></h2>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h2 class="card-title">You answer correctly <strong class="text-danger">{{score}}</strong> the question</h2>
-                        <h2 class="card-title">Your point: <strong class="text-danger">{{score}}</strong></h2>
+                    <div class="suggest-mess">
+                        
                     </div>
                 </div>
+
 
             </div>
         </div>

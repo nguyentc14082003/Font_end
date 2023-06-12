@@ -108,6 +108,7 @@ app.controller("loginCtrl", function ($scope, $rootScope, ApiService) {
 
   $scope.logout = function () {
     $rootScope.student = null;
+    $rootScope.reStudent = null;
     $scope.username = null;
     $scope.password = null;
     $scope.loginStatus = false;

@@ -19,15 +19,15 @@ function sendMail() {
     .addEventListener("submit", function (event) {
       event.preventDefault(); // Ngăn chặn hành động mặc định của form
 
-      var recipient = "nguyentcpc04750@fpt.edu.vn"; // Địa chỉ email người nhận
+      let recipient = "nguyentcpc04750@fpt.edu.vn"; // Địa chỉ email người nhận
 
-      var form = document.getElementById("feedback-form");
-      var name = form.elements.name.value;
-      var email = form.elements.email.value;
-      var message = form.elements.message.value;
-      var subject = form.elements.subject.value;
+      let form = document.getElementById("feedback-form");
+      let name = form.elements.name.value;
+      let email = form.elements.email.value;
+      let message = form.elements.message.value;
+      let subject = form.elements.subject.value;
 
-      var mailtoLink =
+      let mailtoLink =
         "mailto:" +
         recipient +
         "?subject=" +
@@ -36,7 +36,7 @@ function sendMail() {
         encodeURIComponent(
           "Name: " + name + "\nEmail: " + email + "\nMessage: " + message
         );
-      var linkElement = document.createElement("a");
+      let linkElement = document.createElement("a");
       linkElement.href = mailtoLink;
       linkElement.click();
     });

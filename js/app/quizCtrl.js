@@ -22,7 +22,7 @@ app.controller(
           sogiay = thoiluong % 60;
           document.getElementById("minutes").innerHTML = sophut;
           document.getElementById("second").innerHTML = sogiay;
-          $timeout($scope.startCountdown, 1);
+          $timeout($scope.startCountdown, 1000);
         } else {
           if (thoiluong == 0) {
             Swal.fire({
@@ -69,7 +69,7 @@ app.controller(
           $scope.currentQuestionIndex = 0;
 
           // $scope.showNextQuestion();
-          console.log($scope.showQuestions);
+          // console.log($scope.showQuestions);
         })
         .catch(function (error) {
           console.log(error);
@@ -107,8 +107,8 @@ app.controller(
         var currentQuestion = $scope.showQuestions[$scope.currentQuestionIndex];
         var selectedAnswer = $("input[name=myAns]:checked").val();
         var correctAnswerId = currentQuestion.AnswerId;
-        console.log(selectedAnswer);
-        console.log(correctAnswerId);
+        // console.log(selectedAnswer);                                                           
+        // console.log(correctAnswerId);
         if (selectedAnswer == correctAnswerId) {
           // Nếu câu trả lời đúng
           $scope.score++;

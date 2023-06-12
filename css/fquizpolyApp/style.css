@@ -211,7 +211,9 @@ body {
 #faqs {
     background-color: rgb(244, 235, 235);
 }
-
+#learning{
+    height: 800px;
+}
 #contact .introduction-contact .p1,
 .introduction-faqs .p1 {
     padding-top: 2rem;
