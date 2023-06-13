@@ -81,7 +81,7 @@ app.controller("loginCtrl", function ($scope, $rootScope, ApiService) {
           return ($rootScope.student = e);
         }
       });
-      if ($scope.loginStatus) {
+      if ($rootScope.loginStatus) {
         Swal.fire({
           icon: "success",
           title: "Logged in successfully !",
@@ -111,7 +111,7 @@ app.controller("loginCtrl", function ($scope, $rootScope, ApiService) {
     $rootScope.reStudent = null;
     $scope.username = null;
     $scope.password = null;
-    $scope.loginStatus = false;
+    $rootScope.loginStatus = false;
     $scope.backdrop.classList.remove("d-none");
     $scope.backdrop.classList.add("d-fixed");
     Swal.fire({

@@ -211,9 +211,13 @@ body {
 #faqs {
     background-color: rgb(244, 235, 235);
 }
-#learning{
-    height: 800px;
+
+@media (min-width: 768px) {
+    .content-faqs {
+        height: 400px;
+    }
 }
+
 #contact .introduction-contact .p1,
 .introduction-faqs .p1 {
     padding-top: 2rem;
@@ -342,4 +346,50 @@ section {
 
 .modal-hidden {
     display: none !important;
+}
+
+.layout {
+    position: relative;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: aliceblue;
+    display: flex;
+    /* justify-self: center; */
+    align-items: center;
+    justify-items: center;
+    z-index: 9999;
+    /* width: 100%; */
+    color: #fff;
+    font-family: Consolas, Menlo, Monaco, monospace;
+    font-weight: bold;
+    font-size: 78px;
+    opacity: 0.8;
+}
+
+.loader:before {
+    color: black;
+    content: "{";
+    display: inline-block;
+    animation: pulse 0.4s alternate infinite ease-in-out;
+}
+
+.loader:after {
+    color: black;
+    content: "}";
+    display: inline-block;
+    animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
+
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
 }

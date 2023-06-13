@@ -75,3 +75,26 @@ function switchLoginTabs() {
 
   lgtab.classList.add("active");
 }
+
+// Lấy đối tượng offcanvas
+let offcanvas = document.getElementById("togglerNavbar");
+
+// Lấy tất cả các thẻ <a> bên trong offcanvas
+let links = offcanvas.getElementsByTagName("a");
+
+// Thêm sự kiện click cho từng thẻ <a>
+for (let i = 0; i < links.length; i++) {
+  links[i].addEventListener("click", function () {
+    // Ẩn offcanvas khi nhấp vào thẻ <a>
+    let offcanvas = bootstrap.Offcanvas.getInstance(
+      document.getElementById("togglerNavbar")
+    );
+    if (offcanvas != null) {
+      offcanvas.hide();
+    }
+  });
+}
+
+window.addEventListener("load", function () {
+  window.location.href = "#!";
+});

@@ -1,6 +1,7 @@
-
 app.controller("listsubjectsCtrl", function ($scope, $rootScope, ApiService) {
-  $scope.pageCount = Math.ceil($rootScope.list_subjects.length / 4);
+  if ($rootScope.list_subjects != null) {
+    $scope.pageCount = Math.ceil($rootScope.list_subjects.length / 4);
+  }
 
   $scope.begin = 0;
 
@@ -23,7 +24,7 @@ app.controller("listsubjectsCtrl", function ($scope, $rootScope, ApiService) {
       $scope.begin -= 4;
     }
   };
-  $scope.loginChecked = function() {
+  $scope.loginChecked = function () {
     if (!$rootScope.loginStatus) {
       event.preventDefault();
       Swal.fire({
@@ -33,5 +34,4 @@ app.controller("listsubjectsCtrl", function ($scope, $rootScope, ApiService) {
       });
     }
   };
-  
 });

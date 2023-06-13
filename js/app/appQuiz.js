@@ -2,7 +2,7 @@ var API = "https://database-fquizpoly.onrender.com/";
 
 let app = angular.module("fquizpolyApp", ["ngRoute"]);
 
-app.run(function ($rootScope, $http, ApiService) {
+app.run(function ($rootScope, $http, ApiService, $timeout) {
   ApiService.callApi("GET", "student")
     .then(function (response) {
       $rootScope.list_user = response;
@@ -11,7 +11,6 @@ app.run(function ($rootScope, $http, ApiService) {
     .catch(function (error) {
       console.error(error);
     });
-
   ApiService.callApi("GET", "subjects")
     .then(function (response) {
       $rootScope.list_subjects = response;
@@ -77,37 +76,38 @@ app.service("ApiService", function ($http) {
 app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: "../template/main.html",
+      templateUrl: "template/main.html",
       controller: "SlickCarouselCtrl",
     })
     .when("/learning", {
-      templateUrl: "../template/page-learning.html",
+      templateUrl: "template/page-learning.html",
       controller: "listsubjectsCtrl",
     })
     .when("/about", {
-      templateUrl: "../template/page-about.html",
+      templateUrl: "template/page-about.html",
     })
     .when("/contact", {
-      templateUrl: "../template/page-contact.html",
+      templateUrl: "template/page-contact.html",
     })
     .when("/faqs", {
-      templateUrl: "../template/page-faqs.html",
+      templateUrl: "template/page-faqs.html",
     })
     .when("/feedback", {
-      templateUrl: "../template/page-feedback.html",
+      templateUrl: "template/page-feedback.html",
     })
     .when("/inforUser", {
-      templateUrl: "../template/infor-user.html",
+      templateUrl: "template/infor-user.html",
       controller: "inforUserCtrl",
     })
     .when("/changePass", {
-      templateUrl: "../template/changepass.html",
+      templateUrl: "template/changepass.html",
+      controller: "changePassCtrl",
     })
     .when("/achievement", {
-      templateUrl: "../template/achievement.html",
+      templateUrl: "template/achievement.html",
     })
     .when("/quiz/:id/:name", {
-      templateUrl: "../template/quiz.html",
+      templateUrl: "template/quiz.html",
       controller: "quizCtrl",
     })
     .otherwise({
