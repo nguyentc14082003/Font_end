@@ -109,7 +109,7 @@ body {
 .main-header {
     padding-top: 10rem;
     padding-bottom: calc(10rem - 4.5rem);
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("/images/panel-header.png");
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../../images/logo/panelheader.png");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -301,7 +301,7 @@ section {
 #counter-section-container {
     width: 100%;
     text-align: center;
-    background: linear-gradient(to bottom, rgba(190, 159, 55, 0.8) 0%, rgba(185, 161, 51, 0.8) 100%), url("/images/landing.png");
+    background: linear-gradient(to bottom, rgba(190, 159, 55, 0.8) 0%, rgba(185, 161, 51, 0.8) 100%), url("../..git/images/logo/landing.png");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
