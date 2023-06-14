@@ -13,6 +13,7 @@ body {
 }
 
 .nav-item {
+    padding-top: 1.2rem;
     margin-right: 2.5rem;
 }
 
@@ -145,6 +146,9 @@ body {
     .main-header .h1 {
         font-size: 3.5rem;
     }
+}
+.page-section-quiz{
+    height: 80vh;
 }
 #learning .introduction {
     background-color: rgb(255, 191, 52);
