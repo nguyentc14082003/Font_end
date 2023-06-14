@@ -1,6 +1,6 @@
 var API = "https://database-fquizpoly.onrender.com/";
 
-let app = angular.module("fquizpolyApp", ["ngRoute"]);
+var app = angular.module("fquizpolyApp", ["ngRoute"]);
 
 app.run(function ($rootScope, $http, ApiService, $timeout) {
   ApiService.callApi("GET", "student")
