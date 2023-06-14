@@ -146,9 +146,6 @@ body {
         font-size: 3.5rem;
     }
 }
-#learning{
-    height: 80vh;
-}
 #learning .introduction {
     background-color: rgb(255, 191, 52);
 }
