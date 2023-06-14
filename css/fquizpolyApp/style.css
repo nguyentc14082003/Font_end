@@ -146,7 +146,9 @@ body {
         font-size: 3.5rem;
     }
 }
-
+#learning{
+    height: 80vh;
+}
 #learning .introduction {
     background-color: rgb(255, 191, 52);
 }
@@ -353,7 +355,10 @@ section {
 }
 
 .loader {
-    position: absolute;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 0;
     right: 0;
     left: 0;
@@ -384,7 +389,6 @@ section {
     content: "}";
     display: inline-block;
     animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
-
 }
 
 @keyframes pulse {

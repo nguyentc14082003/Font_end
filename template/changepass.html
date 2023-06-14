@@ -1,17 +1,17 @@
-<section class="page-inforUser">
+<section class="page-inforUser" id="learning">
     <div class="container-fluid">
         <div class="introduction-infor text-center mt-4">
             <p class="p1 align-middle pt-4 text-uppercase">Change password</p>
         </div>
         <div class="container">
-            <div class="content-infor pt-5">
+            <div class="content-infor pt-5 mt-5">
                 <div class="row">
                     <div class="form-feedback col-xs-12 col-lg-12 px-3 mb-5 pt-5">
                         <form id="changePassForm" ng-submit="changePass()" name="changePass_form">
                             <div class="mb-3 col-12">
                                 <label for="changePassword" class="form-label fs-5 fw-bold">Password</label>
                                 <input type="password" name="txtchangePassword" id="changePassword" class="form-control"
-                                    placeholder="Please enter password" ng-model="formChange.changePass"
+                                    placeholder="Please enter password" ng-model="formChange.txtchangePass"
                                     ng-required="true"
                                     ng-class="{'is-invalid': changePass_form.txtchangePassword.$dirty && changePass_form.txtchangePassword.$error.required}">
                                 <span class="invalid-feedback"

@@ -43,19 +43,7 @@
                             </label>
                         </div>
                     </div>
-                    <!-- <div class="card-body" ng-repeat="qs in showQuestions|limitTo:1:begin">
-                        <div class="question-content ">
-                            <h2 class="fw-bold">{{$index+1}}: {{qs.Text}}</h2>
-                            <hr>
-                        </div>
-                        <div class="form-check mb-2" ng-repeat="text in qs.Answers">
-                            <input class="form-check-input" type="radio" name="myAns" value="{{text.Id}}"
-                                id="{{text.Id}}">
-                            <label class="form-check-label" for="{{text.Id}}">
-                                {{text.Text}}
-                            </label>
-                        </div>
-                    </div> -->
+                    
                     <div class="buttons bg-dark-subtle p-3 ">
                         <button class="btn btn-primary btn-lg float-start text-white" type="button"
                             ng-click="showNextQuestion()" ng-show="isAnswered">Next Question</button>

@@ -8,9 +8,9 @@ app.controller("changePassCtrl", function ($scope, $rootScope, ApiService) {
     let url = "student/" + id;
 
     console.log(id);
-    if ($rootScope.student.password == $scope.formChange.changePass) {
-      if ($scope.formChange.newpassword == $scope.formChange.confirmPassword) {
-        if ($rootScope.student.password == $scope.formChange.newpassword) {
+    if ($rootScope.student.password == $scope.formChange.txtchangePass) {
+      if ($scope.formChange.txtnewpassword == $scope.formChange.txtconfirmPassword) {
+        if ($rootScope.student.password == $scope.formChange.txtnewpassword) {
           $rootScope.loading = false;
           Swal.fire({
             icon: "warning",
@@ -18,7 +18,7 @@ app.controller("changePassCtrl", function ($scope, $rootScope, ApiService) {
               "The new password must not be the same as the old password !",
           });
         } else {
-          $rootScope.student.password = $scope.formChange.newpassword;
+          $rootScope.student.password = $scope.formChange.txtnewpassword;
           ApiService.callApi("patch", url, $rootScope.student)
             .then(function (response) {
               console.log(
@@ -26,7 +26,7 @@ app.controller("changePassCtrl", function ($scope, $rootScope, ApiService) {
                 response
               );
               $rootScope.loading = false;
-
+                
               Swal.fire({
                 icon: "success",
                 title: "Change password successfully !",
